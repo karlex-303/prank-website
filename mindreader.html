@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Character Analyzer</title>
+<style>
+    body {
+        background: #111;
+        color: #fff;
+        font-family: Arial;
+        text-align: center;
+        padding-top: 80px;
+    }
+    input, button {
+        padding: 12px 20px;
+        font-size: 18px;
+        margin-top: 10px;
+        border-radius: 8px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Character Analyzer</h1>
+
+<div id="step1">
+    <h2>What is your name?</h2>
+    <input id="nameInput" placeholder="Enter your name">
+    <br>
+    <button onclick="goToAge()">Next</button>
+</div>
+
+<div id="step2" style="display:none;">
+    <h2>What is your age?</h2>
+    <input id="ageInput" placeholder="Enter your age">
+    <br>
+    <button onclick="showResult()">Submit</button>
+</div>
+
+<div id="result" style="display:none;">
+    <h2 id="finalText"></h2>
+</div>
+
+<script>
+function goToAge() {
+    let name = document.getElementById("nameInput").value.trim();
+    if (name === "") {
+        alert("Please enter a name 😆");
+        return;
+    }
+    document.getElementById("step1").style.display = "none";
+    document.getElementById("step2").style.display = "block";
+}
+
+function showResult() {
+    let name = document.getElementById("nameInput").value.trim();
+    let age = document.getElementById("ageInput").value.trim();
+
+    if (age === "") {
+        alert("Please enter an age 😆");
+        return;
+    }
+
+    document.getElementById("step2").style.display = "none";
+    document.getElementById("result").style.display = "block";
+
+    let funnyLines = [
+        "you are a gando ",
+        "you are muthal 😜",
+        "kam pa dehan do  😂",
+        "matter ya ni krta mamlat kosh or a ",
+       
+    ];
+
+    let line = funnyLines[Math.floor(Math.random() * funnyLines.length)];
+
+    document.getElementById("finalText").innerHTML =
+        name + ", age " + age + " — " + line;
+}
+</script>
+
+</body>
+</html>
